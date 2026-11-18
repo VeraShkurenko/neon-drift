@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Neon Drift</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div id="scoreBox">
+      <div class="label">РАХУНОК</div>
+      <div id="score">0</div>
+      <div id="subStats"><span id="rank">#–</span> · <span id="kills">0</span> ⚔</div>
+    </div>
+    <div id="leaderboard">
+      <div class="lb-title">ЛІДЕРИ <span id="online"></span></div>
+      <ol id="lbList"></ol>
+    </div>
+    <div id="feed"></div>
+    <canvas id="minimap" width="160" height="160"></canvas>
+    <div id="boostBar"><div id="boostHint">ПРОБІЛ / ПКМ — прискорення</div></div>
+    <button id="boostBtn" aria-label="Прискорення">⚡</button>
+  </div>
+
+  <!-- Menu -->
+  <div id="menu" class="overlay">
+    <div class="card">
+      <h1 class="logo">NEON<span>DRIFT</span></h1>
+      <p class="tagline">Збирай енергію · Поглинай менших · Уникай мін</p>
+      <input id="nick" maxlength="16" placeholder="Твій нікнейм" autocomplete="off" />
+      <div class="label small">КОЛІР</div>
+      <div id="colors"></div>
+      <button id="playBtn" class="btn primary">ГРАТИ</button>
+      <div class="controls">
+        <div><kbd>Миша</kbd> керування</div>
+        <div><kbd>Пробіл</kbd>/<kbd>ЛКМ</kbd> прискорення</div>
+        <div class="mobile-only">📱 Тягни пальцем · кнопка ⚡</div>
+      </div>
+      <div id="status" class="status">Підключення…</div>
+    </div>
+  </div>
+
+  <!-- Death screen -->
+  <div id="death" class="overlay hidden">
+    <div class="card">
+      <div class="death-title">ТЕБЕ ПОГЛИНУЛИ</div>
+      <div id="deathBy" class="death-by"></div>
+      <div class="stats">
+        <div><b id="dScore">0</b><span>рахунок</span></div>
+        <div><b id="dBest">0</b><span>макс. маса</span></div>
+        <div><b id="dKills">0</b><span>поглинань</span></div>
+        <div><b id="dTime">0с</b><span>час життя</span></div>
+      </div>
+      <button id="againBtn" class="btn primary">ГРАТИ ЗНОВУ <small id="againNick"></small></button>
+      <button id="menuBtn" class="btn ghost">Змінити нік / колір</button>
+      <div class="hint">Enter — швидкий перезапуск</div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
