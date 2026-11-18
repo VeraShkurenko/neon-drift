@@ -1,7 +1,7 @@
 {
-  "name": "scratch-2026-11-17-06de58",
+  "name": "neon-drift",
   "version": "1.0.0",
-  "description": "",
+  "description": "Multiplayer .io arena game (Node.js + Socket.io + Canvas)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
